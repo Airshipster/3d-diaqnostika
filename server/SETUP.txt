@@ -6,7 +6,9 @@
    (JSON-массив строк), ALLOWED_ORIGINS (JSON-массив HTTPS origins), WEBHOOK_SECRET.
    Эти значения не публикуются в репозитории.
 4. Таблица остаётся приватной. Скрипт исполняется от владельца.
-5. Перед первым запуском владелец подтверждает запрашиваемые Google разрешения.
+5. Выделенный стандартный Google Cloud проект: указать homepage, privacy.html
+   и домен; для постоянной работы использовать OAuth In production.
+   Перед первым запуском владелец подтверждает три запрашиваемых Google разрешения.
 6. Web app публикуется с доступом Anyone. Его URL /exec указывается в site/config.js.
 7. Telegram setWebhook направляется на /exec?route=telegram&hook=<WEBHOOK_SECRET>.
    max_connections=1. Секретный webhook URL также не помещается в сайт/репозиторий.

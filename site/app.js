@@ -4,7 +4,7 @@
   const settings=window.DIAQNOSTIKA_CONFIG||{};
   const form=document.getElementById('doctor-form');
   let formEnabled=false;
-  try { const endpoint=new URL(settings.formEndpoint);formEnabled=endpoint.protocol==='https:'&&endpoint.hostname==='script.google.com'&&/^\/macros\/s\/[^/]+\/exec$/.test(endpoint.pathname); } catch {}
+  try { const endpoint=new URL(settings.formEndpoint);formEnabled=/^https?:$/.test(location.protocol)&&endpoint.protocol==='https:'&&endpoint.hostname==='script.google.com'&&/^\/macros\/s\/[^/]+\/exec$/.test(endpoint.pathname); } catch {}
   form.hidden=!formEnabled;
   document.getElementById('application-contact').hidden=formEnabled;
   document.querySelectorAll('[data-application-form-copy]').forEach(el=>el.hidden=!formEnabled);
@@ -76,7 +76,7 @@
   }
   addEventListener('message',event=>{
     let origin;try{origin=new URL(event.origin);}catch{return;}
-    const google=origin.protocol==='https:'&&(origin.hostname==='script.google.com'||origin.hostname==='script.googleusercontent.com'||origin.hostname.endsWith('.script.googleusercontent.com'));
+    const google=origin.protocol==='https:'&&(origin.hostname==='script.google.com'||origin.hostname==='script.googleusercontent.com'||origin.hostname.endsWith('.script.googleusercontent.com')||/^n-[a-z0-9-]+-script\.googleusercontent\.com$/.test(origin.hostname));
     const data=event.data;
     if(!google||!pending||data?.type!=='3d-diaqnostika-submission'||data.requestId!==pending)return;
     finish(data.ok===true&&data.stored===true,data.code);

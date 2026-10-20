@@ -61,7 +61,9 @@ function acceptApplication_(p){
 function recipients_(){return JSON.parse(props_().getProperty('RECIPIENTS')||'{}');}
 function telegram_(method,payload){
   var token=props_().getProperty('BOT_TOKEN');if(!token)throw Error('bot_not_configured');
-  var response=UrlFetchApp.fetch('https://api.telegram.org/bot'+token+'/'+method,{method:'post',contentType:'application/json',payload:JSON.stringify(payload),muteHttpExceptions:true});
+  var response;
+  try{response=UrlFetchApp.fetch('https://api.telegram.org/bot'+token+'/'+method,{method:'post',contentType:'application/json',payload:JSON.stringify(payload),muteHttpExceptions:true});}
+  catch(error){throw Error('telegram_network');}
   var body;try{body=JSON.parse(response.getContentText());}catch(e){throw Error('telegram_response');}
   if(response.getResponseCode()!==200||!body.ok)throw Error('telegram_'+(body.error_code||response.getResponseCode()));
   return body.result;

@@ -10,4 +10,6 @@ The user has already instructed that the temporary indexing restriction must be 
 2. Rebuild using the task's `work/build_landing.py`. Production removes the temporary noindex tag automatically and updates the canonical URL. Do not copy an old standalone HTML file to production.
 3. Verify the deployed HTML has no noindex; verify DNS, HTTPS, redirects, canonical and all map/form links. Update the backend's allowed origins to the real clinic origin. Only then add the new destination to search tooling/sitemap as appropriate.
 
-The live cooperation contact currently uses telephone and WhatsApp. The Google Apps Script authorization remains blocked by Google under the intended Elman account. No live form/Telegram delivery is claimed. The independent offline presentation contains private commercial terms and must not be added to this public website repository.
+The cooperation form uses a private Google Sheet and Telegram notifications through an isolated owner-authorized Apps Script backend. Its dedicated Cloud OAuth application is In production. After a domain migration, update the OAuth homepage, privacy URL and authorized domain as well as the backend allowed origins. Verify a complete form submission before removing the old destination.
+
+The independent offline presentation contains private commercial terms and must not be added to this public website repository.

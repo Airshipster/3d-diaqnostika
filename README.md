@@ -12,13 +12,15 @@ The 12 services and prices follow the center's supplied leaflet. Equipment and i
 
 ## Applications
 
-The current release uses telephone and WhatsApp contact actions. The map uses bundled MapLibre GL JS 5.24.0 and a locally customized VersaTiles style. Ground, roads, buildings, water and labels use the clinic palette, including a dark theme. The renderer loads when the map approaches the viewport. The 3D tooth diagram is an inline SVG updated in place; clinical photos are decoded ahead of display. The online form stays hidden while `site/config.js` has an empty `formEndpoint`; it does not claim to send or store applications.
+The cooperation form stores applications in a private Google Sheet and sends Telegram notifications to chats subscribed by authorized administrators. Telephone and WhatsApp remain available. The form acknowledges success only after storage; repeating a request with the same UUID does not duplicate the row or notification.
+
+The map uses bundled MapLibre GL JS 5.24.0 and a locally customized VersaTiles style. Ground, roads, buildings, water and labels use the clinic palette, including a dark theme. The renderer loads when the map approaches the viewport. The 3D tooth diagram is an inline SVG updated in place; clinical photos are decoded ahead of display.
 
 Vector tiles, glyphs and map sprites load from the free public VersaTiles server, which has no uptime guarantee. Map attribution includes OpenStreetMap contributors and ESA WorldCover 2021 / CC BY 4.0. The renderer's BSD-3-Clause and style's MIT licences are bundled in `site/assets/`. [Provider documentation](https://docs.versatiles.org/guides/use_tiles_versatiles_org).
 
-An isolated Google Apps Script backend is prepared in `server/`. The first runtime authorization was blocked by Google on 20 October 2026 before any grant. A dedicated standard Cloud project was created for supported OAuth configuration; its setup awaits the owner's acceptance of Google's API User Data Policy. No live application delivery has been verified. Complete the original script's authorization before enabling the form.
+The isolated Google Apps Script backend in `server/` uses a dedicated standard Cloud project with OAuth publishing status In production. The owner granted its three configured scopes on 20 October 2026. The one-time configuration handler has been removed. A clearly marked test application was stored once and its Telegram notification was accepted; the browser also received the genuine storage acknowledgement.
 
-After authorization and private configuration, set `formEndpoint` to the verified Apps Script `/exec` URL. The website will show the doctor application form automatically. See `server/SETUP.txt` for backend configuration and verification.
+`site/config.js` contains only the public Apps Script `/exec` endpoint. An empty endpoint hides the form. A review copy opened directly as a local file uses the telephone/WhatsApp fallback; online forms require an allowed HTTP(S) origin. See `server/SETUP.txt` for backend configuration and verification, and `site/privacy.html` for the bilingual application-data policy.
 
 Telegram tokens, Google credentials, administrator IDs, spreadsheet IDs and webhook secrets must remain outside this public repository. Bot subscriptions require an actual `/start` from an authorized administrator in the intended private or group chat.
 
