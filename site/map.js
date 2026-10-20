@@ -47,7 +47,7 @@
       }
       const map=new maplibregl.Map({container:mapNode,style,
         center:[point[1],point[0]-.0005],zoom:16.2,minZoom:11,maxZoom:19,
-        scrollZoom:false,dragPan:!coarse,touchZoomRotate:!coarse,
+        scrollZoom:true,dragPan:!coarse,touchZoomRotate:!coarse,
         dragRotate:false,pitchWithRotate:false,touchPitch:false,
         attributionControl:false,renderWorldCopies:false,
         cooperativeGestures:false});
