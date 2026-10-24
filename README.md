@@ -26,4 +26,4 @@ Telegram tokens, Google credentials, administrator IDs, spreadsheet IDs and webh
 
 `TELEGRAM_BOT_TOKEN` is stored as an encrypted repository Actions secret. Pages does not read or embed it. After authorization, the backend also needs its token in private Apps Script properties; the Actions secret alone does not activate the bot.
 
-The clinic-domain build removes the temporary `noindex`, sets its canonical URL and publishes `robots.txt` and `sitemap.xml`. Cloudflare provides the separate `3dd.az` DNS zone; hosting remains in this repository's GitHub Pages. The portfolio domain and all other Cloudflare zones are independent. See DEPLOYMENT.md and publication.json.
+Search indexing is disabled on the clinic domain by explicit owner request. `publication.json` has `indexable: false`; every HTML page contains `noindex`, and the sitemap advertises no pages. Production does not override this preference. Cloudflare provides the separate `3dd.az` DNS zone; hosting remains in this repository's GitHub Pages. The portfolio domain and all other Cloudflare zones are independent. See DEPLOYMENT.md and publication.json.

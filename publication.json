@@ -1,5 +1,6 @@
 {
   "environment": "production",
   "publicUrl": "https://3dd.az/doctors/",
-  "migrationRule": "Clinic production domain. The doctor landing lives under /doctors/; the root redirects there until a separate homepage is created. Staging noindex is removed by the builder."
+  "indexable": false,
+  "migrationRule": "Clinic production domain. The doctor landing lives under /doctors/; the root redirects there until a separate homepage is created. Search indexing is disabled by the owner and must remain disabled until explicitly requested otherwise."
 }
