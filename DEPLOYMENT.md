@@ -1,5 +1,17 @@
 # Publication and domain migration
 
+## Clinic production destination
+
+The clinic domain is `3dd.az`. The doctor cooperation page is `https://3dd.az/doctors/` and its privacy page is `https://3dd.az/doctors/privacy.html`. The domain root redirects to `/doctors/`, preserving language query and hash, until a separate homepage is created.
+
+The production build writes the landing to `site/doctors/`, retains the public form endpoint, removes staging `noindex`, and publishes a domain-root sitemap and robots.txt. The separate Cloudflare zone `3dd.az` points to this repository's GitHub Pages. Do not change the account-level GitHub Pages domain, portfolio DNS, existing Cloudflare zones, or unrelated Workers.
+
+The backend's ALLOWED_ORIGINS includes `https://3dd.az`; former origins are retained until the complete new-domain submission is verified. Google OAuth remains In production. No backend source or scope changes are required for the new form origin.
+
+Use `work/build_landing.py` from the task workspace to rebuild and `work/verify_domain_migration.py` to check paths, canonical, assets, indexing and public-source boundaries. A live HTTP/HTTPS and genuine form-delivery check are required before reporting migration complete.
+
+## Previous staging destination
+
 The temporary site is `https://elman.digital/3dd/`. GitHub Pages inherits the account's pre-existing custom domain. The clinic repository must not change the portfolio's domain or DNS.
 
 The temporary landing contains `meta name="robots" content="noindex"`. Keep the page crawlable so search engines can read that rule. Do not block the entire personal domain or add a project-directory robots.txt as an indexing control.

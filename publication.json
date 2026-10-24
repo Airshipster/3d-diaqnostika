@@ -1,5 +1,5 @@
 {
-  "environment": "temporary",
-  "publicUrl": "https://elman.digital/3dd/",
-  "migrationRule": "When the user migrates to the clinic's dedicated domain, set environment to production and publicUrl to that domain. The builder removes staging noindex automatically."
+  "environment": "production",
+  "publicUrl": "https://3dd.az/doctors/",
+  "migrationRule": "Clinic production domain. The doctor landing lives under /doctors/; the root redirects there until a separate homepage is created. Staging noindex is removed by the builder."
 }

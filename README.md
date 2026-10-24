@@ -4,9 +4,9 @@ Doctor cooperation landing page in Azerbaijani and Russian. Azerbaijani opens by
 
 ## Website
 
-Temporary URL: https://elman.digital/3dd/
+Production URL: https://3dd.az/doctors/
 
-`site/` is a buildless static website suitable for GitHub Pages. The included workflow publishes that directory.
+`site/` is a buildless static website suitable for GitHub Pages. The included workflow publishes that directory. The doctor landing and its assets live in `site/doctors/`; the domain root redirects to `/doctors/` until a separate homepage is created.
 
 The 12 services and prices follow the center's supplied leaflet. Equipment and illustrative clinical images are attributed to Planmeca on the page. Area diagrams are schematic. The interactive map uses the supplied clinic coordinates; it is not a surveyed entrance plan.
 
@@ -20,10 +20,10 @@ Vector tiles, glyphs and map sprites load from the free public VersaTiles server
 
 The isolated Google Apps Script backend in `server/` uses a dedicated standard Cloud project with OAuth publishing status In production. The owner granted its three configured scopes on 20 October 2026. The one-time configuration handler has been removed. A clearly marked test application was stored once and its Telegram notification was accepted; the browser also received the genuine storage acknowledgement.
 
-`site/config.js` contains only the public Apps Script `/exec` endpoint. An empty endpoint hides the form. A review copy opened directly as a local file uses the telephone/WhatsApp fallback; online forms require an allowed HTTP(S) origin. See `server/SETUP.txt` for backend configuration and verification, and `site/privacy.html` for the bilingual application-data policy.
+`site/doctors/config.js` contains only the public Apps Script `/exec` endpoint. An empty endpoint hides the form. A review copy opened directly as a local file uses the telephone/WhatsApp fallback; online forms require an allowed HTTP(S) origin. See `server/SETUP.txt` for backend configuration and verification, and `site/doctors/privacy.html` for the bilingual application-data policy.
 
 Telegram tokens, Google credentials, administrator IDs, spreadsheet IDs and webhook secrets must remain outside this public repository. Bot subscriptions require an actual `/start` from an authorized administrator in the intended private or group chat.
 
 `TELEGRAM_BOT_TOKEN` is stored as an encrypted repository Actions secret. Pages does not read or embed it. After authorization, the backend also needs its token in private Apps Script properties; the Actions secret alone does not activate the bot.
 
-Temporary search indexing is disabled. See DEPLOYMENT.md and publication.json for the required removal of noindex when moving to the clinic domain.
+The clinic-domain build removes the temporary `noindex`, sets its canonical URL and publishes `robots.txt` and `sitemap.xml`. Cloudflare provides the separate `3dd.az` DNS zone; hosting remains in this repository's GitHub Pages. The portfolio domain and all other Cloudflare zones are independent. See DEPLOYMENT.md and publication.json.
