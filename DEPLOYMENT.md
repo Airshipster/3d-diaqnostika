@@ -4,6 +4,8 @@
 
 The clinic domain is `3dd.az`. The doctor cooperation page is `https://3dd.az/doctors/` and its privacy page is `https://3dd.az/doctors/privacy.html`. The domain root redirects to `/doctors/`, preserving language query and hash, until a separate homepage is created.
 
+The short address `https://3dd.az/doc` redirects to the same doctor page through `site/doc/index.html`. It preserves the language query and section hash and keeps `noindex`; the build regenerates this alias on every publication.
+
 The production build writes the landing to `site/doctors/` and retains the public form endpoint. Search indexing is disabled by the owner's latest instruction: `publication.json` has `indexable: false`, and every HTML page, including root redirects and privacy pages, contains `noindex`. Keep crawling allowed so search engines can read that tag. The sitemap contains no page URLs and is not advertised in robots.txt. A production domain must not automatically enable indexing; require an explicit owner request.
 
 The separate Cloudflare zone `3dd.az` points to this repository's GitHub Pages. Do not change the account-level GitHub Pages domain, portfolio DNS, existing Cloudflare zones, or unrelated Workers.
